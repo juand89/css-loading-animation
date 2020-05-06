@@ -1,5 +1,13 @@
 import Head from 'next/head'
-
+const content = {
+  header: `So, how 'bout them Knicks?`,
+  intro: `What are their names? I'm Santa Claus! This opera's as lousy as it is brilliant! Your lyrics lack subtlety. You can't just have your characters announce how they feel. That makes me feel angry! Good news, everyone! I've taught the toaster to feel love!`,
+  list: [
+    `Yes! In your face, Gandhi!`,
+    `So I really am important? How I feel when I'm drunk is correct?`,
+    `Who are those horrible orange men?`,
+  ],
+}
 export default function Home() {
   return (
     <div className="container">
@@ -9,43 +17,13 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
-
-        <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/zeit/next.js/tree/master/examples"
-            className="card"
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+        <h1 className="loading">{content.header}</h1>
+        <p className="loading">{content.intro}</p>
+        <ul className="loading">
+          {content.list.map((item, i) => {
+            return <li key={i}>{item}</li>
+          })}
+        </ul>
       </main>
 
       <footer>
@@ -187,6 +165,28 @@ export default function Home() {
             width: 100%;
             flex-direction: column;
           }
+        }
+        .loading {
+          color: transparent;
+          background: linear-gradient(
+            100deg,
+            #eceff1 30%,
+            #f6f7f8 50%,
+            #eceff1 70%
+          );
+          background-size: 400%;
+          animation: loading 1.2s ease-in-out infinite;
+        }
+        @keyframes loading {
+          0% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0 50%;
+          }
+        }
+        li {
+          margin-bottom: 0.5em;
         }
       `}</style>
 
